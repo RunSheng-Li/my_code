@@ -32,5 +32,17 @@ group = frame['price1'].groupby(frame['color'])
 # 等级分组
 # 上面讲的是用一列元素作为键为数据分组。同理，也可以用很多列，也就是多个键，按照等级关系分组
 ggroup = frame['price1'].groupby([frame['color'], frame['object']])
-print(ggroup.groups)
-print(ggroup.sum())
+# print(ggroup.groups)
+# print(ggroup.sum())
+
+# 到目前为止，我们按照一列数据对数据分类。
+# 事实上，我们可以按照多列数据或整个DataFrame把数据分为几组
+# 如果不想重复多次使用groupby对象，最方便的方法是一次就把所有的分组依据和计算方法都指定好，而无需定义任何中间变量
+
+res1 = frame[['price1','price2']].groupby(frame['color']).mean()
+print(res1)
+
+res2 = frame.groupby(frame['color']).mean()
+print(res2)
+
+
