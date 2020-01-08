@@ -138,4 +138,47 @@ def print2(a, b, c):
 print1(1, 2)
 print2(1, 2, 3)
 
+
 # ------------------------------------------------------------------------------
+# 对带有返回值的函数进行装饰
+
+def w(func):
+    def inner():
+        print("w inner 开始")
+        func()
+        print("w inner 结束")
+
+    return inner
+
+
+@w
+def test():
+    print("test函数被调用")
+    return "test"
+
+
+res = test()
+print(f"res,{res}")  # res,None
+
+
+# 这是因为在inner函数中对test进行了调用，但是没有接受不了返回值，也没有进行返回，那么默认就是None了
+# 那么对上面的代码进行修改
+def w(func):
+    def inner():
+        print("w inner 开始")
+        str = func()
+        print("w inner 结束")
+        return str
+
+    return inner
+
+
+@w
+def test():
+    print("test函数被调用")
+    return "test"
+
+
+res = test()
+print(f"res,{res}")  # res,test
+# 这样就达到预期，完成对带返回值参数的函数进行装饰。
