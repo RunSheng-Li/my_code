@@ -95,16 +95,47 @@ def w_hello(func):
     """
     如果原函数有参数，那闭包必须保持参数个数一致，并且将参数传递给原方法
     """
+
     def inner(name):
         """
         如果被装饰的函数有形参，那么闭包函数必须有参数
         """
         print("w_hello inner")
         func(name)
+
     return inner
+
 
 @w_hello
 def hello(name):
     print(f"hello,{name}")
 
+
 hello("sam")
+
+
+# ------------------------------------------------------------------------------
+# 如果是多个或者不定长参数，要怎么处理
+
+def w(func):
+    def inner(*args, **kwargs):
+        print("w inner")
+        func(*args, **kwargs)
+
+    return inner
+
+
+@w
+def print1(a, b):
+    print(f"参数是{a},{b}")
+
+
+@w
+def print2(a, b, c):
+    print(f"参数是{a},{b},{c}")
+
+
+print1(1, 2)
+print2(1, 2, 3)
+
+# ------------------------------------------------------------------------------
