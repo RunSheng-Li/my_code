@@ -181,4 +181,29 @@ def test():
 
 res = test()
 print(f"res,{res}")  # res,test
+
+
 # 这样就达到预期，完成对带返回值参数的函数进行装饰。
+
+# ------------------------------------------------------------------------------
+# 带参数的装饰器
+
+def w(pre="sam"):
+    def outter(func):
+        def inner():
+            print(f"我的参数是{pre}")
+            func()
+
+        return inner
+
+    return outter
+
+
+@w('haha')
+def test():
+    print("test")
+
+
+test()
+
+# ------------------------------------------------------------------------------
