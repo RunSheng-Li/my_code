@@ -226,3 +226,21 @@ def test():
 test()
 
 # ------------------------------------------------------------------------------
+# 类装饰器
+
+class Test():
+    def __init__(self,func):
+        print('test init')
+        print(f"func name is {func.__name__}")
+        self._func = func
+    def __call__(self, *args, **kwargs):
+        print('装饰器中的功能')
+        self._func()
+
+@Test
+def test():
+    print('test')
+
+test()
+
+# ------------------------------------------------------------------------------
