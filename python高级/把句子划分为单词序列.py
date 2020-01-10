@@ -31,3 +31,15 @@ for word in s:
 
 print(list(s))
 print(s[0])
+
+
+# 序列可以迭代的原因:iter函数
+class Foo:
+    def __iter__(self):
+        pass
+
+
+from collections import abc
+
+f = Foo()
+print(isinstance(f, abc.Iterable))
