@@ -29,3 +29,16 @@ class OpenFile():
 
 with OpenFile('file2.txt') as f:
     f.write('Hello')
+
+# contextilb模块
+from contextlib import contextmanager
+
+@contextmanager
+def hello(name):
+    print(f'hello,{name}')
+    yield
+    print(f'bye bye')
+
+
+with hello('sam'):
+    print('test')
