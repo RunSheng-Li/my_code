@@ -48,3 +48,16 @@ A = np.arange(10, 19).reshape((3, 3))
 
 # 数组迭代
 # ------------------------------------------------------------------------------
+
+for i in a:
+    # print(i)
+    pass
+
+for row in A:
+    # print(row)
+    pass
+
+# 遍历矩阵每个元素
+for item in A.flat:
+    # print(item)
+    pass
