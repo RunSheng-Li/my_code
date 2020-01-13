@@ -61,3 +61,16 @@ for row in A:
 for item in A.flat:
     # print(item)
     pass
+
+# 下面这个函数接收三个参数：聚合函数、对哪条轴应用迭代操作、数组
+# 如果axis选项的值为0，按列进行迭代操作。为1，按行操作
+print(np.apply_along_axis(np.mean, axis=0, arr=A))
+print(np.apply_along_axis(np.mean, axis=1, arr=A))
+
+
+def foo(x):
+    return x / 2
+
+
+print(np.apply_along_axis(foo, axis=1, arr=A))
+print(np.apply_along_axis(foo, axis=0, arr=A))
