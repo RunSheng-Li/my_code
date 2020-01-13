@@ -1,6 +1,32 @@
+import numpy as np
+
 # 算术运算符
 # ------------------------------------------------------------------------------
 
+a = np.arange(4)
+# print(a)
+
+# print(a + 4)
+# print(a * 2)
+
+b = np.arange(4, 8)
+# print(b)
+
+# print(a + b)
+# print(a - b)
+# print(a * b)
+
+# 此外，这些运算符还适用于返回值为numpy数组的函数
+# print(a * np.sin(b))
+# print(a * np.sqrt(b))
+
+# 对于多维数组，这些运算符仍然是元素级
+A = np.arange(0, 9).reshape(3, 3)
+# print(A)
+B = np.ones((3, 3))
+# print(B)
+
+# print(A * B)
 
 # 矩阵积
 # ------------------------------------------------------------------------------
