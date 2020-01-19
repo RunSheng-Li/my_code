@@ -117,5 +117,7 @@ history
 ```
 查看命令文档
 help --help
+
+man ls
 ```
 
