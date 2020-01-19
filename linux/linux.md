@@ -9,7 +9,6 @@ linux
 ```
 linux下的文件系统
 linux没有盘符这个概念，只有一个根目录 / ,所有文件都在它下面
-
 ```
 
 
@@ -74,5 +73,49 @@ rm 1.txt
 
 删除文件夹
 rm -r 文件夹名
+```
+
+
+
+```
+复制文件
+cp hello.txt test1/
+
+复制文件夹
+cp -r data/ test1/
+```
+
+
+
+```
+剪切文件
+mv hello.txt test3/
+
+剪切文件夹
+mv test3/ test2/
+
+重命名
+mv data1/ my_data
+```
+
+
+
+```
+以目录树的方式显示文件结构
+tree
+```
+
+
+
+```
+查看命令历史
+history
+```
+
+
+
+```
+查看命令文档
+help --help
 ```
 
