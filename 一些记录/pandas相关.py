@@ -21,3 +21,9 @@
 # 写入
 # new_data.to_csv('new1.csv', index=False, encoding="utf_8_sig")
 # new_data.to_excel('new1.xlsx', index=False, encoding="utf_8_sig")
+
+# 修改列名称
+# new_data.rename(columns={'article_url':'url','Video_review_writing':'comment'},inplace=True)
+
+# 不等于两个值其中的一个
+# new_data = data.query('anno_tag1=="是" and audit_hidden_detail!=["通过","不通过"]')
