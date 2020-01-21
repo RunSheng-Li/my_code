@@ -26,5 +26,55 @@ def gen():
 
 
 g = gen()
-print(next(g))
-print(g.send('world'))
+# print(next(g))
+# print(g.send('world'))
+
+# yield from
+# ------------------------------------------------------------------------------
+def func():
+    for x in "ABC":
+        yield x
+
+for x in func():
+    # print(x)
+    pass
+
+# 上面写法等同于
+def func():
+    yield from "ABC"
+
+for x in func():
+    # print(x)
+    pass
+
+
+# gevent
+# ------------------------------------------------------------------------------
+import gevent
+
+
+def func1():
+    print("func1 running")
+    gevent.sleep(2)  # 内部函数实现io操作
+    print("switch func1")
+
+
+def func2():
+    print("func2 running")
+    gevent.sleep(1)
+    print("switch func2")
+
+
+def func3():
+    print("func3  running")
+    gevent.sleep(0.5)
+    print("func3 done..")
+
+gevent.joinall([gevent.spawn(func1),
+                gevent.spawn(func2),
+                gevent.spawn(func3),
+                ])
+
+
+
+
