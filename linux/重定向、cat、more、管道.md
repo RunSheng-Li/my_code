@@ -17,6 +17,9 @@ tree > 1.txt
 ```
 查看文件
 cat 1.txt
+
+合并文件
+cat 1.txt 2.txt > 3.txt
 ```
 
 
