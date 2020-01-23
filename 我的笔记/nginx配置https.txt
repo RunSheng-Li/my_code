@@ -1,0 +1,106 @@
+nginx配置https
+
+编辑nginx.conf文件
+
+server {
+    listen       80;
+    server_name  wangcainiubi.live; # 域名
+    rewrite ^(.*)$ https://www.wangcainiubi.live$1 permanent;  # 配置跳转https
+
+    #charset koi8-r;
+
+    #access_log  logs/host.access.log  main;
+
+    location / {
+        root   html;
+        index  index.html index.htm;
+    }
+
+
+
+# HTTPS server
+#
+server {
+    listen       443 ssl;
+    server_name  angcainiubi.live;
+
+    ssl_certificate      cert/wangcainiubi.live_chain.crt; # cert文件夹与nginx.conf同级目录
+    ssl_certificate_key  cert/wangcainiubi.live_key.key;
+
+    ssl_session_cache    shared:SSL:1m;
+    ssl_session_timeout  5m;
+
+    ssl_ciphers  HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers  on;
+
+    location / {
+        root   html;
+        index  index.html index.htm;
+    }
+}
+
+
+
+--------------------
+如果出现
+the "ssl" parameter requires ngx_http_ssl_module
+是因为
+nginx已安装，ssl模块未安装的解决方法：
+
+切换到源码包：
+cd /usr/src/nginx-1.5.9
+
+查看nginx原有的模块
+/usr/local/nginx/sbin/nginx -V
+
+在configure arguments:后面显示的原有的configure参数如下：
+--prefix=/usr/local/nginx --with-http_stub_status_module
+
+进入nginx源码包目录，运行：
+./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module
+
+配置完成后，运行命令make命令：
+
+
+make
+
+注意：此处不能进行make install，否则就是覆盖安装
+
+
+替换之前先备份
+
+cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.bak
+
+
+先停止nginx服务：
+//查询nginx主进程号
+$ ps -ef | grep nginx
+
+//从容停止Nginx：
+$kill -QUIT 主进程号
+
+//快速停止Nginx：
+kill -TERM 主进程号
+
+//强制停止Nginx：
+pkill -9 nginx
+
+将刚刚编译好的nginx覆盖掉原有的nginx
+
+cp ./objs/nginx /usr/local/nginx/sbin/
+
+然后启动nginx，仍可以通过命令查看是否已经加入成功
+
+/usr/local/nginx/sbin/nginx -V
+
+此时应该显示为即配置成功：
+
+configure arguments: --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module
+
+
+
+
+
+
+
+
