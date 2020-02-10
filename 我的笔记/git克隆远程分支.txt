@@ -1,0 +1,14 @@
+git克隆远程分支
+
+从远端克隆仓库
+
+git clone xxx
+
+列出所有分支名称
+
+git branch -a
+
+作用是 checkout 远程的 dev 分支，在本地起名为 dev 分支，并切换到本地的 dev 分支
+
+git checkout -b dev origin/dev
+
