@@ -13,3 +13,7 @@ git checkout -b yourbranchname origin/oldbranchname
 3、推送到git
 
 git push origin yourbranchname
+
+
+推送这个新分支到远程
+git push origin 新分支名
