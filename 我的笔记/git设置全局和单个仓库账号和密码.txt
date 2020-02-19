@@ -1,0 +1,14 @@
+Git全局配置和单个仓库的用户名邮箱配置
+
+配置全局仓库的账号和密码
+git config --global user.name "userName"  //你的用户名
+git config --global user.email "email address" //你的邮箱地址
+
+
+如果你的公司项目也放在git上面，为了不与个人账号的发生冲突，这时候需要给这个仓库单独设立账号和密码
+进入到这个仓库里面，使用下面命令
+git config user.name "userName"  //你的用户名
+git config user.email "email address" //你的邮箱地址
+
+设置好账号和密码后
+git config --list   //查看git设置情况
