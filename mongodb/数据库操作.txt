@@ -1,0 +1,23 @@
+当前有哪些数据库
+show dbs
+
+创建数据库（没有插入数据之前，不会显示）
+use mydb
+
+查看有哪些集合
+show collections
+
+创建空集合
+db.createCollection("student")
+
+查看当前在哪个数据库
+db或db.getName()
+
+有哪些可以操作的命令
+help
+db.student.help()
+
+退出
+exit
+
+
